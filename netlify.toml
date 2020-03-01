@@ -1,0 +1,18 @@
+[build]
+  command = "npm run build"
+  functions = "dist/functions"
+
+[template.environment]
+  BOT_TOKEN = "discord bot token here"
+  CHANNEL_ID = "discord channel id for invite"
+  GUILD_ID = "discord guild id"
+  
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/discord"
+  to = "/api/invite"
+  status = 301

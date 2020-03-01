@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "dependencies": {
+    "axios": "^0.19.2",
+    "discord.js": "^11.5.1",
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "netlify-lambda": "^1.6.3",
+    "prettier": "^1.19.1"
+  },
+  "scripts": {
+    "start": "netlify-lambda serve src/functions/",
+    "build": "netlify-lambda build src/functions/",
+    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"{src/**/*.js}\""
+  }
+} 
