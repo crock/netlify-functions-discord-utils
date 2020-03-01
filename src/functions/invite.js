@@ -17,10 +17,10 @@ exports.handler = async function(event, context) {
   )
 
   return {
-    statusCode: 301,
+    statusCode: 200,
     headers: {
-      Location: invite.url,
       'Cache-Control': 'no-cache',
+      'Access-Control-Allow-Origin': '*',
     },
     body: JSON.stringify({ inviteCode: invite.code }),
   }

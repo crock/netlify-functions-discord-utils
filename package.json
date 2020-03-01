@@ -1,17 +1,32 @@
 {
-  "private": true,
+  "name": "netlify-functions-discord-utils",
+  "author": "Alex Crocker <hello@crock.dev>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crock/netlify-functions-discord-utils.git"
+  },
+  "bugs": {
+    "url": "https://github.com/crock/netlify-functions-discord-utils/issues"
+  },
   "dependencies": {
-    "axios": "^0.19.2",
-    "discord.js": "^11.5.1",
-    "dotenv": "^8.2.0"
+    "discord.js": "^12.0.0"
   },
   "devDependencies": {
+    "@netlify/zip-it-and-ship-it": "^0.3.1",
     "netlify-lambda": "^1.6.3",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "webpack-node-externals": "^1.7.2"
   },
   "scripts": {
-    "start": "netlify-lambda serve src/functions/",
-    "build": "netlify-lambda build src/functions/",
-    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"{src/**/*.js}\""
-  }
-} 
+    "start": "netlify-lambda serve src/functions --config webpack.functions.js",
+    "build": "netlify-lambda build src/functions --config webpack.functions.js",
+    "build-archive": "node index.js",
+    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.js\"",
+    "postinstall": "netlify-lambda install"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "engineStrict": true
+}

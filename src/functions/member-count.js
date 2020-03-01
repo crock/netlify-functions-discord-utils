@@ -10,7 +10,7 @@ exports.handler = async function(event, context) {
     statusCode: 200,
     headers: {
       'Cache-Control': 'no-cache',
-      'Access-Control-Allow-Origin': '*'
+      'Access-Control-Allow-Origin': '*',
     },
     body: JSON.stringify({ memberCount }),
   }
