@@ -27,6 +27,18 @@ As of the initial release, there are currently two functions included, but I'm o
   "scope": "identify"
 }}
 ```
+- /api/members - returns an array of simplified guild member objects 
+```json
+{members: [
+    {
+        id: "356143246889713679",
+        avatarUrl: "https://cdn.discordapp.com/avatars/356143246889713679/f21a9cb92d303b028ffb4d72a99fb779.webp?size=256",
+        username: "Croc#1111",
+        joinDate: "Wed Mar 04 2020 10:00:49 GMT-0500 (Eastern Standard Time)",
+        nickname: null
+    }
+]}
+```
 
 _Note: For the invite and sso endpoints, you can append `?redirect` to the url to return a 301 redirect directly instead of a JSON payload._
 
