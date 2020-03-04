@@ -13,6 +13,22 @@ As of the initial release, there are currently two functions included, but I'm o
 ```json
 {memberCount: 88}
 ```
+- /api/sso - returns the correctly formatted oauth authorization url
+```json
+{url: "https://discordapp.com/api/oauth2/authorize?response_type=code&client_id=157730590492196864&scope=identify%20guilds.join&state=15773059ghq9183habn&redirect_uri=https%3A%2F%2Fnicememe.website&prompt=consent"}
+```
+- /api/callback?code=AUTHORIZATION_CODE_HERE - send back the authorization code returned from the sso endpoint and get back a fresh token response 
+```json
+{tokens: {
+  "access_token": "6qrZcUqja7812RVdnEKjpzOL4CvHBFG",
+  "token_type": "Bearer",
+  "expires_in": 604800,
+  "refresh_token": "D43f5y0ahjqew82jZ4NViEr2YafMKhue",
+  "scope": "identify"
+}}
+```
+
+_Note: For the invite and sso endpoints, you can append `?redirect` to the url to return a 301 redirect directly instead of a JSON payload._
 
 ## Usage
 

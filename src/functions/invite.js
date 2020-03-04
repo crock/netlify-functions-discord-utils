@@ -16,12 +16,20 @@ exports.handler = async function(event, context) {
     'Generated an invite for a new user!'
   )
 
-  return {
-    statusCode: 200,
-    headers: {
-      'Cache-Control': 'no-cache',
-      'Access-Control-Allow-Origin': '*',
-    },
-    body: JSON.stringify({ inviteCode: invite.code }),
-  }
+  return event.queryStringParameters.redirect
+    ? {
+        statusCode: 301,
+        headers: {
+          Location: invite.url,
+          'Cache-Control': 'no-cache',
+        },
+      }
+    : {
+        statusCode: 200,
+        headers: {
+          'Cache-Control': 'no-cache',
+          'Access-Control-Allow-Origin': '*',
+        },
+        body: JSON.stringify({ inviteCode: invite.code }),
+      }
 }
