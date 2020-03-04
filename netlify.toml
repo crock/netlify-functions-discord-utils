@@ -6,6 +6,10 @@
   BOT_TOKEN = "discord bot token here"
   CHANNEL_ID = "discord channel id for invite"
   GUILD_ID = "discord guild id"
+  CLIENT_ID = ""
+  CLIENT_SECRET = ""
+  OAUTH_SCOPES = "identify email"
+  REDIRECT_URI = "https://example.com/api/callback"
   
 [[redirects]]
   from = "/api/*"
