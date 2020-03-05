@@ -7,37 +7,68 @@ As of the initial release, there are currently two functions included, but I'm o
 ## Included API Endpoints / Serverless Functions:
 - /api/invite - generates a one-time use server invite on demand
 ```json
-{inviteCode: "R6wTYQ9"}
+{ inviteCode: "R6wTYQ9" }
 ```
-- /api/member-count - returns the total member count of the Discord server like so...
+- /api/user-count - returns the total user counts of the Discord server
 ```json
-{memberCount: 88}
+{ 
+  memberCount: 88, 
+  botCount: 12, 
+  totalUsers: 100 
+}
 ```
 - /api/sso - returns the correctly formatted oauth authorization url
 ```json
-{url: "https://discordapp.com/api/oauth2/authorize?response_type=code&client_id=157730590492196864&scope=identify%20guilds.join&state=15773059ghq9183habn&redirect_uri=https%3A%2F%2Fnicememe.website&prompt=consent"}
+{
+  url: "https://discordapp.com/api/oauth2/authorize?response_type=code&client_id=157730590492196864&scope=identify%20guilds.join&state=15773059ghq9183habn&redirect_uri=https%3A%2F%2Fnicememe.website&prompt=consent"
+}
 ```
 - /api/callback?code=AUTHORIZATION_CODE_HERE - send back the authorization code returned from the sso endpoint and get back a fresh token response 
 ```json
-{tokens: {
-  "access_token": "6qrZcUqja7812RVdnEKjpzOL4CvHBFG",
-  "token_type": "Bearer",
-  "expires_in": 604800,
-  "refresh_token": "D43f5y0ahjqew82jZ4NViEr2YafMKhue",
-  "scope": "identify"
-}}
+{
+  tokens: {
+    "access_token": "6qrZcUqja7812RVdnEKjpzOL4CvHBFG",
+    "token_type": "Bearer",
+    "expires_in": 604800,
+    "refresh_token": "D43f5y0ahjqew82jZ4NViEr2YafMKhue",
+    "scope": "identify"
+  }
+}
 ```
-- /api/members - returns an array of simplified guild member objects 
+- /api/users - returns an array of simplified guild member objects 
 ```json
-{members: [
+{
+  members: [
     {
         id: "356143246889713679",
-        avatarUrl: "https://cdn.discordapp.com/avatars/356143246889713679/f21a9cb92d303b028ffb4d72a99fb779.webp?size=256",
         username: "Croc#1111",
-        joinDate: "Wed Mar 04 2020 10:00:49 GMT-0500 (Eastern Standard Time)",
-        nickname: null
+        joinDate: "2015-04-26T06:26:56.936000+00:00",
+        avatarUrl: "https://cdn.discordapp.com/avatars/356143246889713679/f21a9cb92d303b028ffb4d72a99fb779.png?size=256"
     }
-]}
+  ],
+  bots: [
+    {
+        id: "490170400483966997",
+        username: "Ogey the Penguin#2299",
+        joinDate: "2015-04-26T06:26:56.936000+00:00",
+        avatarUrl: "https://cdn.discordapp.com/avatars/490170400483966997/19a8f743ed811b75c48c92263afd4b3c.webp?size=256"
+    }
+  ],
+  all: [
+    {
+        id: "356143246889713679",
+        username: "Croc#1111",
+        joinDate: "2015-04-26T06:26:56.936000+00:00",
+        avatarUrl: "https://cdn.discordapp.com/avatars/356143246889713679/f21a9cb92d303b028ffb4d72a99fb779.png?size=256"
+    },
+    {
+        id: "490170400483966997",
+        username: "Ogey the Penguin#2299",
+        joinDate: "2015-04-26T06:26:56.936000+00:00",
+        avatarUrl: "https://cdn.discordapp.com/avatars/490170400483966997/19a8f743ed811b75c48c92263afd4b3c.webp?size=256"
+    }
+  ]
+}
 ```
 
 _Note: For the invite and sso endpoints, you can append `?redirect` to the url to return a 301 redirect directly instead of a JSON payload._

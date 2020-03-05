@@ -1,9 +1,9 @@
 [build]
-  command = "npm run build-archive"
+  command = "npm run build"
   functions = "dist/functions"
 
 [build.environment]
-  GIT_LFS_ENABLED = "true"
+  NODE_VERSION = 12
 
 [template.environment]
   BOT_TOKEN = "discord bot token here"
@@ -22,4 +22,14 @@
 [[redirects]]
   from = "/discord"
   to = "/api/invite"
+  status = 301
+
+[[redirects]]
+  from = "/api/members"
+  to = "/api/users"
+  status = 301
+
+[[redirects]]
+  from = "/api/member-count"
+  to = "/api/user-count"
   status = 301

@@ -1,26 +1,33 @@
-import { Client } from 'discord.js'
+import axios from 'axios'
 
 exports.handler = async function(event, context) {
-  const bot = new Client()
-  await bot.login(process.env.BOT_TOKEN)
+  const baseUrl = `https://discordapp.com/api`
 
-  const guild = bot.guilds.get(process.env.GUILD_ID)
-  const channel = guild.channels.get(process.env.CHANNEL_ID)
+  const channel = process.env.CHANNEL_ID
 
-  const invite = await channel.createInvite(
-    {
+  const url = `${baseUrl}/channels/${channel}/invites`
+
+  const response = await axios({
+    method: 'POST',
+    headers: {
+      Authorizaton: `Bot ${process.env.BOT_TOKEN}`,
+    },
+    json: {
+      max_age: 86400,
+      max_uses: 1,
       temporary: false,
-      maxUses: 1,
       unique: true,
     },
-    'Generated an invite for a new user!'
-  )
+    url,
+  })
+
+  const code = response.data.code
 
   return event.queryStringParameters.redirect
     ? {
         statusCode: 301,
         headers: {
-          Location: invite.url,
+          Location: `https://discord.gg/${code}`,
           'Cache-Control': 'no-cache',
         },
       }
@@ -30,6 +37,6 @@ exports.handler = async function(event, context) {
           'Cache-Control': 'no-cache',
           'Access-Control-Allow-Origin': '*',
         },
-        body: JSON.stringify({ inviteCode: invite.code }),
+        body: JSON.stringify({ inviteCode: code }),
       }
 }

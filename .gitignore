@@ -10,7 +10,7 @@ node_modules/
 .DS_Store
 
 # Transpiled files
-dist/**/*.js
+dist/**/*.zip
 
 # Lock files
 package-lock.json
