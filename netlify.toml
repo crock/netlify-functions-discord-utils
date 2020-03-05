@@ -3,7 +3,7 @@
   functions = "dist/functions"
 
 [build.environment]
-  GIT_LFS_ENABLED = true
+  GIT_LFS_ENABLED = "true"
 
 [template.environment]
   BOT_TOKEN = "discord bot token here"
