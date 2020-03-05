@@ -1,6 +1,6 @@
 [build]
   command = "npm run build-archive"
-  functions = "dist/functions/archives"
+  functions = "dist/functions"
 
 [template.environment]
   BOT_TOKEN = "discord bot token here"
