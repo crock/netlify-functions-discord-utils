@@ -3,7 +3,7 @@
   functions = "dist/functions"
 
 [build.environment]
-  NODE_VERSION = 12
+  NODE_VERSION = "12"
 
 [template.environment]
   BOT_TOKEN = "discord bot token here"
