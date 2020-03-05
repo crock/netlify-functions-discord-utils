@@ -2,6 +2,9 @@
   command = "npm run build-archive"
   functions = "dist/functions"
 
+[build.environment]
+  GIT_LFS_ENABLED = true
+
 [template.environment]
   BOT_TOKEN = "discord bot token here"
   CHANNEL_ID = "discord channel id for invite"
