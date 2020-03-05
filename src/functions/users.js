@@ -9,11 +9,11 @@ exports.handler = async function(event, context) {
   const url = `${baseUrl}/guilds/${guild}/members`
 
   const response = await axios({
-    method: 'GET',
+    method: 'get',
     headers: {
-      Authorizaton: `Bot ${process.env.BOT_TOKEN}`,
+      Authorizaton: `Bot ${process.env.BOT_TOKEN}`
     },
-    url,
+    url
   })
 
   const getSimplifiedUserObject = member => {

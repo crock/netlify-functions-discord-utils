@@ -11,7 +11,7 @@
   GUILD_ID = "discord guild id"
   CLIENT_ID = ""
   CLIENT_SECRET = ""
-  OAUTH_SCOPES = "identify email"
+  OAUTH_SCOPES = "identify"
   REDIRECT_URI = "https://example.com/api/callback"
   
 [[redirects]]

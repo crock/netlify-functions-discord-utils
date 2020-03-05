@@ -18,6 +18,9 @@ exports.handler = async function(event, context) {
     method: 'post',
     url,
     data,
+    headers: {
+      'Content-Type': 'application/json'
+    }
   })
 
   return {

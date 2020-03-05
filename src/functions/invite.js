@@ -8,17 +8,18 @@ exports.handler = async function(event, context) {
   const url = `${baseUrl}/channels/${channel}/invites`
 
   const response = await axios({
-    method: 'POST',
+    method: 'post',
     headers: {
       Authorizaton: `Bot ${process.env.BOT_TOKEN}`,
+      'Content-Type': 'application/json'
     },
-    json: {
+    data: {
       max_age: 86400,
       max_uses: 1,
       temporary: false,
       unique: true,
     },
-    url,
+    url
   })
 
   const code = response.data.code
