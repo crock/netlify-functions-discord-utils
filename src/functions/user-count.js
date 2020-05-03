@@ -10,7 +10,7 @@ exports.handler = async function(event, context) {
   const response = await axios({
     method: 'get',
     headers: {
-      Authorizaton: `Bot ${process.env.BOT_TOKEN}`
+      Authorization: `Bot ${process.env.BOT_TOKEN}`
     },
     url,
   })

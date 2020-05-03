@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 exports.handler = async function(event, context) {
-  const baseUrl = `https://discordapp.com/api`
+  const baseUrl = `https://discordapp.com/api/v6`
 
   const channel = process.env.CHANNEL_ID
 
@@ -9,8 +9,9 @@ exports.handler = async function(event, context) {
 
   const response = await axios({
     method: 'post',
+    url: url,
     headers: {
-      Authorizaton: `Bot ${process.env.BOT_TOKEN}`,
+      Authorization: `Bot ${process.env.BOT_TOKEN}`,
       'Content-Type': 'application/json'
     },
     data: {
@@ -19,7 +20,6 @@ exports.handler = async function(event, context) {
       temporary: false,
       unique: true,
     },
-    url
   })
 
   const code = response.data.code
