@@ -21,7 +21,7 @@
 
 [[redirects]]
   from = "/discord"
-  to = "/api/invite"
+  to = "/.netlify/functions/invite?redirect=true"
   status = 301
 
 [[redirects]]
